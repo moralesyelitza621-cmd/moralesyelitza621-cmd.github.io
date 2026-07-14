@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang="es-CL">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Imperio Digital Morales | Diseño Web y Marketing Digital en Chile</title>
+<meta name="description" content="Diseño de páginas web profesionales para emprendedores y empresas en Chile. Sitios rápidos, optimizados para celular y listos para vender. Cotiza por WhatsApp.">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://imperiodigitalmorales.com/">
+<meta property="og:title" content="Imperio Digital Morales | Diseño Web y Marketing Digital en Chile">
+<meta property="og:description" content="Diseño de páginas web profesionales para emprendedores y empresas en Chile.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://imperiodigitalmorales.com/">
+<style>
+  :root{
+    --tinta:#141021;
+    --violeta:#3a1e5c;
+    --violeta-2:#5b2e86;
+    --oro:#e7a13a;
+    --oro-claro:#f4c975;
+    --crudo:#f4ede1;
+    --linea:rgba(244,237,225,0.14);
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  html{scroll-behavior:smooth;}
+  body{
+    background:var(--tinta);
+    color:var(--crudo);
+    font-family:'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+    line-height:1.55;
+  }
+  h1,h2,h3,.display{
+    font-family:'Georgia', 'Iowan Old Style', serif;
+    font-weight:700;
+    letter-spacing:-0.01em;
+  }
+  a{color:inherit;text-decoration:none;}
+  img{max-width:100%;display:block;border-radius:10px;}
+  .wrap{max-width:1080px;margin:0 auto;padding:0 24px;}
+  section{padding:88px 0;border-bottom:1px solid var(--linea);}
+  .eyebrow{
+    font-size:12.5px;letter-spacing:0.18em;text-transform:uppercase;
+    color:var(--oro-claro);font-weight:700;margin-bottom:14px;display:block;
+  }
+
+  /* HERO */
+  .hero{
+    position:relative;
+    padding:120px 0 96px;
+    background:
+      radial-gradient(ellipse 60% 50% at 80% 0%, rgba(231,161,58,0.16), transparent 60%),
+      linear-gradient(160deg, var(--tinta) 0%, var(--violeta) 130%);
+    border-bottom:1px solid var(--linea);
+    overflow:hidden;
+  }
+  .hero::after{
+    content:"";
+    position:absolute; inset:0;
+    background-image:
+      linear-gradient(var(--linea) 1px, transparent 1px),
+      linear-gradient(90deg, var(--linea) 1px, transparent 1px);
+    background-size:64px 64px;
+    opacity:0.35;
+    mask-image:radial-gradient(ellipse 70% 70% at 50% 30%, black, transparent);
+    pointer-events:none;
+  }
+  .hero .wrap{position:relative;z-index:1;}
+  .hero h1{
+    font-size:clamp(2.3rem, 5vw, 3.6rem);
+    color:var(--crudo);
+    max-width:820px;
+    line-height:1.08;
+  }
+  .hero h1 em{font-style:normal;color:var(--oro-claro);}
+  .hero p.lead{
+    font-size:1.2rem;color:rgba(244,237,225,0.82);
+    max-width:600px;margin-top:22px;
+  }
+  .badges{display:flex;flex-wrap:wrap;gap:10px 22px;margin-top:28px;}
+  .badges span{
+    font-size:0.92rem;color:var(--crudo);opacity:0.85;
+  }
+  .btn{
+    display:inline-block;margin-top:36px;
+    background:var(--oro);color:var(--tinta);
+    padding:16px 30px;border-radius:100px;
+    font-weight:700;font-size:1.02rem;
+    box-shadow:0 10px 30px -8px rgba(231,161,58,0.55);
+    transition:transform .15s ease, box-shadow .15s ease;
+  }
+  .btn:hover{transform:translateY(-2px);box-shadow:0 14px 34px -8px rgba(231,161,58,0.7);}
+  .btn.outline{
+    background:transparent;border:1.5px solid var(--oro-claro);color:var(--oro-claro);
+    box-shadow:none;
+  }
+
+  /* TESTIMONIOS */
+  .testi-grid{
+    display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+    gap:22px;margin-top:44px;
+  }
+  .testi{
+    background:rgba(244,237,225,0.04);
+    border:1px solid var(--linea);
+    border-radius:14px;padding:26px;
+  }
+  .testi .stars{color:var(--oro-claro);font-size:0.95rem;margin-bottom:12px;letter-spacing:2px;}
+  .testi p{font-size:0.98rem;color:rgba(244,237,225,0.9);}
+  .testi cite{
+    display:block;margin-top:14px;font-style:normal;
+    font-size:0.85rem;color:var(--oro-claro);
+  }
+
+  /* SERVICIOS */
+  .servicios{
+    display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
+    gap:1px;background:var(--linea);
+    border:1px solid var(--linea);border-radius:14px;overflow:hidden;
+    margin-top:44px;
+  }
+  .servicio{background:var(--tinta);padding:30px 26px;}
+  .servicio .num{
+    font-family:Georgia,serif;font-size:0.85rem;color:var(--oro);
+    margin-bottom:14px;display:block;
+  }
+  .servicio h3{font-size:1.15rem;color:var(--crudo);margin-bottom:10px;}
+  .servicio p{font-size:0.94rem;color:rgba(244,237,225,0.75);}
+
+  /* PROCESO */
+  .proceso{margin-top:44px;}
+  .paso{
+    display:grid;grid-template-columns:56px 1fr;gap:20px;
+    padding:22px 0;border-top:1px solid var(--linea);
+  }
+  .paso:last-child{border-bottom:1px solid var(--linea);}
+  .paso .n{
+    font-family:Georgia,serif;font-size:1.6rem;color:var(--oro);
+  }
+  .paso h4{font-size:1.05rem;color:var(--crudo);margin-bottom:4px;}
+  .paso p{font-size:0.93rem;color:rgba(244,237,225,0.72);}
+
+  /* MODULOS */
+  .modulos{
+    display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));
+    gap:18px;margin-top:44px;
+  }
+  .modulo{
+    border:1px solid var(--linea);border-radius:12px;padding:22px;
+    background:linear-gradient(160deg, rgba(91,46,134,0.18), transparent);
+  }
+  .modulo h3{font-size:1.02rem;color:var(--oro-claro);margin-bottom:8px;}
+  .modulo p{font-size:0.9rem;color:rgba(244,237,225,0.75);}
+
+  /* PAQUETES */
+  .paquetes{
+    display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+    gap:22px;margin-top:44px;
+  }
+  .paquete{
+    border:1px solid var(--linea);border-radius:16px;padding:34px 28px;
+    background:rgba(244,237,225,0.03);
+    display:flex;flex-direction:column;
+  }
+  .paquete.destacado{
+    border-color:var(--oro);
+    background:linear-gradient(160deg, rgba(231,161,58,0.12), rgba(244,237,225,0.03));
+  }
+  .paquete .medalla{font-size:1.6rem;margin-bottom:10px;}
+  .paquete h3{font-size:1.2rem;color:var(--crudo);}
+  .paquete .precio{
+    font-family:Georgia,serif;font-size:1.7rem;color:var(--oro-claro);
+    margin:10px 0 14px;
+  }
+  .paquete p.desc{font-size:0.93rem;color:rgba(244,237,225,0.78);margin-bottom:24px;flex-grow:1;}
+  .paquete .btn{margin-top:0;width:100%;text-align:center;}
+
+  /* REDES */
+  .redes{
+    display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+    gap:18px;margin-top:44px;
+  }
+  .red{
+    border:1px solid var(--linea);border-radius:12px;padding:24px;
+    display:flex;gap:16px;align-items:flex-start;
+  }
+  .red .icon{font-size:1.6rem;}
+  .red h3{font-size:1rem;color:var(--crudo);margin-bottom:6px;}
+  .red p{font-size:0.88rem;color:rgba(244,237,225,0.7);}
+
+  /* CONTACTO */
+  .contacto{
+    text-align:center;
+    background:linear-gradient(160deg, var(--violeta) 0%, var(--tinta) 100%);
+    border-bottom:none;
+  }
+  .contacto h2{font-size:clamp(1.8rem,4vw,2.6rem);margin-bottom:16px;}
+  .contacto p{color:rgba(244,237,225,0.8);max-width:480px;margin:0 auto;}
+  .contacto .btn{margin-top:32px;font-size:1.1rem;padding:18px 38px;}
+
+  footer{
+    text-align:center;padding:32px 0;font-size:0.82rem;
+    color:rgba(244,237,225,0.45);
+  }
+
+  h2{font-size:clamp(1.6rem,3.4vw,2.1rem);color:var(--crudo);max-width:640px;}
+  section > .wrap > p.section-lead{
+    font-size:1.02rem;color:rgba(244,237,225,0.72);max-width:600px;margin-top:14px;
+  }
+
+  @media (max-width:640px){
+    section{padding:64px 0;}
+    .hero{padding:96px 0 64px;}
+  }
+</style>
+</head>
+<body>
+
+<section class="hero">
+  <div class="wrap">
+    <span class="eyebrow">Diseño web · Chile 🇨🇱</span>
+    <h1>Hago tu página web profesional <em>en tiempo récord</em></h1>
+    <p class="lead">Diseño web para emprendedores y empresas en Chile. Tu negocio funcionando 24/7 en internet, sin dolores de cabeza.</p>
+    <div class="badges">
+      <span>✅ Sin conocimientos técnicos</span>
+      <span>✅ Entrega rápida</span>
+      <span>✅ Precio justo</span>
+      <span>✅ Optimizada para celular</span>
+    </div>
+    <a class="btn" href="https://wa.me/56942580715?text=Hola%20quiero%20mi%20p%C3%A1gina%20web" target="_blank" rel="noopener">📲 Quiero mi página web ahora</a>
+  </div>
+</section>
+
+<section id="testimonios">
+  <div class="wrap">
+    <span class="eyebrow">Testimonios</span>
+    <h2>Lo que dicen quienes ya dieron el salto</h2>
+    <div class="testi-grid">
+      <div class="testi">
+        <div class="stars">★★★★★</div>
+        <p>Transformó por completo la imagen de mi negocio. Mi página quedó increíble y mis clientes me lo dicen todo el tiempo.</p>
+        <cite>María G., emprendedora</cite>
+      </div>
+      <div class="testi">
+        <div class="stars">★★★★★</div>
+        <p>Profesional, rápida y muy creativa. 100% recomendada.</p>
+        <cite>Carlos R., dueño de tienda online</cite>
+      </div>
+      <div class="testi">
+        <div class="stars">★★★★★</div>
+        <p>Pude lanzar mi negocio digital con una imagen que me enorgullece mostrar.</p>
+        <cite>Lucía M., coach</cite>
+      </div>
+      <div class="testi">
+        <div class="stars">★★★★★</div>
+        <p>Mi página quedó exactamente como la soñé y en menos de una semana ya tenía mis primeras consultas.</p>
+        <cite>Catalina Fuentes, terapeuta holística</cite>
+      </div>
+      <div class="testi">
+        <div class="stars">★★★★★</div>
+        <p>Mi restaurante duplicó las reservas online desde que tenemos presencia web profesional.</p>
+        <cite>Rodrigo Tapia, chef y restaurantero</cite>
+      </div>
+      <div class="testi">
+        <div class="stars">★★★★★</div>
+        <p>La página es moderna, carga súper rápido en el celular y mis clientes la aman.</p>
+        <cite>Valentina Sepúlveda, consultora de imagen</cite>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="servicios">
+  <div class="wrap">
+    <span class="eyebrow">Qué hago</span>
+    <h2>Tecnología &amp; creación de contenidos digitales</h2>
+    <p class="section-lead">Diseñadora de páginas web y creadora de contenidos digitales. Transformo ideas en negocios digitales rentables.</p>
+    <div class="servicios">
+      <div class="servicio">
+        <span class="num">01</span>
+        <h3>🌐 Diseño de páginas web</h3>
+        <p>Sitios profesionales optimizados para vender, con diseño moderno, rápido y adaptado a móviles.</p>
+      </div>
+      <div class="servicio">
+        <span class="num">02</span>
+        <h3>📱 Creación de contenidos</h3>
+        <p>Contenido estratégico para Instagram, TikTok, Facebook y YouTube que conecta y genera ventas.</p>
+      </div>
+      <div class="servicio">
+        <span class="num">03</span>
+        <h3>🛒 Marketing de afiliados</h3>
+        <p>Monetiza tu plataforma con Amazon y Mercado Libre, generando ingresos pasivos.</p>
+      </div>
+      <div class="servicio">
+        <span class="num">04</span>
+        <h3>📈 Estrategia digital</h3>
+        <p>Tu presencia digital completa para posicionarte como referente en tu nicho.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="proceso">
+  <div class="wrap">
+    <span class="eyebrow">Cómo trabajamos</span>
+    <h2>De la idea a tu página lista, en 6 pasos</h2>
+    <div class="proceso">
+      <div class="paso"><div class="n">1</div><div><h4>Consulta inicial</h4><p>Me cuentas tu proyecto e idea.</p></div></div>
+      <div class="paso"><div class="n">2</div><div><h4>Propuesta</h4><p>Te presento el plan y el precio.</p></div></div>
+      <div class="paso"><div class="n">3</div><div><h4>Pago del 50%</h4><p>Iniciamos el trabajo.</p></div></div>
+      <div class="paso"><div class="n">4</div><div><h4>Diseño y desarrollo</h4><p>Creamos tu página con dedicación.</p></div></div>
+      <div class="paso"><div class="n">5</div><div><h4>Revisión</h4><p>Tú la ves y apruebas.</p></div></div>
+      <div class="paso"><div class="n">6</div><div><h4>Pago final y entrega</h4><p>Tu página lista para brillar. 🚀</p></div></div>
+    </div>
+  </div>
+</section>
+
+<section id="modulo">
+  <div class="wrap">
+    <span class="eyebrow">Módulo 8</span>
+    <h2>Estrategias de marketing digital</h2>
+    <p class="section-lead">Domina las herramientas y técnicas del marketing digital para posicionar tu marca, atraer clientes y multiplicar tus ventas.</p>
+    <div class="modulos">
+      <div class="modulo"><h3>Marketing de contenidos</h3><p>Crea y distribuye contenido de valor para atraer, educar y fidelizar a tu audiencia.</p></div>
+      <div class="modulo"><h3>Email marketing</h3><p>Construye listas de suscriptores y diseña campañas de correo que conviertan.</p></div>
+      <div class="modulo"><h3>SEO y posicionamiento</h3><p>Optimiza tu sitio para aparecer en los primeros resultados de Google.</p></div>
+      <div class="modulo"><h3>Publicidad en redes (Ads)</h3><p>Campañas de pago en Meta, Instagram y TikTok con precisión.</p></div>
+      <div class="modulo"><h3>Embudo de ventas digital</h3><p>Un recorrido estratégico desde el primer contacto hasta la compra.</p></div>
+      <div class="modulo"><h3>Marketing de influencers</h3><p>Colabora con creadores de contenido para ampliar tu alcance.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="paquetes">
+  <div class="wrap">
+    <span class="eyebrow">Inversión</span>
+    <h2>Elige el plan perfecto para tu negocio</h2>
+    <div class="paquetes">
+      <div class="paquete">
+        <div class="medalla">🥉</div>
+        <h3>Básico</h3>
+        <div class="precio">Desde $150.000 CLP</div>
+        <p class="desc">Página de 1 sección + botón de WhatsApp. Ideal para emprendedores que están iniciando.</p>
+        <a class="btn outline" href="https://wa.me/56942580715?text=Hola%20quiero%20informaci%C3%B3n%20sobre%20el%20paquete%20B%C3%A1sico" target="_blank" rel="noopener">Consultar</a>
+      </div>
+      <div class="paquete destacado">
+        <div class="medalla">🥈</div>
+        <h3>Profesional</h3>
+        <div class="precio">Desde $300.000 CLP</div>
+        <p class="desc">Hasta 5 secciones + redes sociales + galería. Ideal para negocios en crecimiento.</p>
+        <a class="btn" href="https://wa.me/56942580715?text=Hola%20quiero%20informaci%C3%B3n%20sobre%20el%20paquete%20Profesional" target="_blank" rel="noopener">Consultar</a>
+      </div>
+      <div class="paquete">
+        <div class="medalla">🥇</div>
+        <h3>Premium</h3>
+        <div class="precio">Desde $500.000 CLP</div>
+        <p class="desc">Página completa + logo + contenido + optimización. Ideal para marcas que quieren destacar.</p>
+        <a class="btn outline" href="https://wa.me/56942580715?text=Hola%20quiero%20informaci%C3%B3n%20sobre%20el%20paquete%20Premium" target="_blank" rel="noopener">Consultar</a>
+      </div>
+    </div>
+    <p style="margin-top:26px;font-size:0.88rem;color:rgba(244,237,225,0.6);">💳 Pago 50% al inicio — 50% al entregar. Sin sorpresas.</p>
+  </div>
+</section>
+
+<section id="redes">
+  <div class="wrap">
+    <span class="eyebrow">Síguenos</span>
+    <h2>Contenido en todas las plataformas</h2>
+    <div class="redes">
+      <a class="red" href="https://www.facebook.com/share/1D7Lu6TKdC/" target="_blank" rel="noopener">
+        <span class="icon">📘</span>
+        <div><h3>Facebook</h3><p>Contenido exclusivo, novedades y comunidad activa.</p></div>
+      </a>
+      <a class="red" href="https://www.instagram.com/yelitzamorales158" target="_blank" rel="noopener">
+        <span class="icon">📸</span>
+        <div><h3>Instagram</h3><p>Inspiración visual, tips de diseño y estrategias digitales.</p></div>
+      </a>
+      <a class="red" href="https://www.tiktok.com/@imperiodigitalmorales" target="_blank" rel="noopener">
+        <span class="icon">🎵</span>
+        <div><h3>TikTok</h3><p>Videos cortos con tutoriales y tendencias digitales.</p></div>
+      </a>
+      <a class="red" href="https://youtube.com/@yelitzamorales-z8x" target="_blank" rel="noopener">
+        <span class="icon">▶️</span>
+        <div><h3>YouTube</h3><p>Tutoriales completos y formación en marketing digital.</p></div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<section class="contacto">
+  <div class="wrap">
+    <span class="eyebrow">Contáctanos</span>
+    <h2>¿Lista para tener tu página web? 🚀</h2>
+    <p>Escríbenos ahora y te respondemos en minutos.<br>Yelitza Morales — Diseñadora Web Profesional 🇨🇱</p>
+    <a class="btn" href="https://wa.me/56942580715?text=Hola%20Yelitza%2C%20quiero%20mi%20p%C3%A1gina%20web%20profesional" target="_blank" rel="noopener">💬 Escribir por WhatsApp</a>
+  </div>
+</section>
+
+<footer>
+  © Imperio Digital Morales — Todos los derechos reservados
+</footer>
+
+</body>
+</html>
