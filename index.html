@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="es-CL">
-<head>
+D<head>
   <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-G1B5P7D07Q"></script>
 <script>
@@ -221,6 +221,14 @@
     .hero{padding:96px 0 64px;}
   }
 </style>
+  <script src="https://cdn.jsdelivr.net/npm/@statsig/js-client/build/statsig-js-client.min.js"></script>
+<script>
+  const myStatsigClient = new Statsig.StatsigClient(
+    "client-4gR2mALYOj161neVPAkPXri4kOEUpBGaftXOicqqCiS",
+    { userID: "user-" + Date.now() }
+  );
+  myStatsigClient.initializeAsync();
+</script>
 </head>
 <body>
 
