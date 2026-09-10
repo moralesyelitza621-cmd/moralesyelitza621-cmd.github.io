@@ -232,8 +232,8 @@ S<!DOCTYPE html>
 </head>
 <body>
 
-<section class="hero"><video autoplay muted loop playsinline style="width:100%;max-width:600px;border-radius:12px;margin-top:24px;display:block;">
-        <source src="Imperia_talking_about_website_202607112236.mp4" type="video/mp4"></video>
+<section class="hero"><video id="heroVideo" autoplay muted loop playsinline style="width:100%;max-width:600px;border-radius:12px;margin-top:24px;display:block;">
+        <source src="Imperia_talking_about_website_202607112236.mp4" type="video/mp4"></video><button onclick="var v=document.getElementById('heroVideo'); v.muted=!v.muted; this.textContent = v.muted ? '🔇 Activar sonido' : '🔊 Silenciar';" style="margin-top:8px;padding:8px 16px;border-radius:20px;border:none;background:#0F6E56;color:#fff;font-size:14px;cursor:pointer;">🔇 Activar sonido</button>
   
   <div class="wrap">
     <span class="eyebrow">Diseño web · Chile 🇨🇱</span>
