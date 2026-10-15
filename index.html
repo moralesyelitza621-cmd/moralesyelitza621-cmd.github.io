@@ -412,6 +412,145 @@ S<!DOCTYPE html>
     🔗 Visita mi página web
   </a>
 </div>
+<!-- ============================================================
+  Chatbot flotante de Imperio Digital Morales
+============================================================ -->
+<style>
+  #imd-chat-btn, #imd-chat-panel, #imd-chat-panel * {
+    box-sizing: border-box;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  }
+  #imd-chat-btn {
+    position: fixed; left: 20px; bottom: 20px; z-index: 2147483000;
+    width: 60px; height: 60px; border-radius: 50%; border: 2px solid #d4af37;
+    background: #0b0b0b; color: #d4af37; font-size: 28px; line-height: 1;
+    cursor: pointer; box-shadow: 0 6px 20px rgba(0,0,0,.35);
+    display: flex; align-items: center; justify-content: center; padding: 0;
+  }
+  #imd-chat-btn:hover { transform: scale(1.06); }
+  #imd-chat-panel {
+    position: fixed; left: 20px; bottom: 92px; z-index: 2147483000;
+    width: 360px; max-width: calc(100vw - 32px); height: 480px; max-height: calc(100vh - 120px);
+    background: #111; color: #f2f2f2; border: 1px solid #d4af37; border-radius: 16px;
+    box-shadow: 0 12px 40px rgba(0,0,0,.45); display: none; flex-direction: column; overflow: hidden;
+  }
+  #imd-chat-panel.imd-open { display: flex; }
+  #imd-chat-head {
+    background: #0b0b0b; border-bottom: 1px solid #d4af37; padding: 12px 14px;
+    display: flex; align-items: center; justify-content: space-between;
+  }
+  #imd-chat-head strong { color: #d4af37; font-size: 15px; }
+  #imd-chat-head span { font-size: 12px; color: #aaa; display: block; }
+  #imd-chat-close { background: none; border: 0; color: #d4af37; font-size: 22px; cursor: pointer; line-height: 1; }
+  #imd-chat-msgs { flex: 1; overflow-y: auto; padding: 12px; display: flex; flex-direction: column; gap: 8px; }
+  .imd-msg { max-width: 85%; padding: 9px 12px; border-radius: 12px; font-size: 14px; line-height: 1.4; white-space: pre-wrap; word-wrap: break-word; }
+  .imd-msg a { color: #d4af37; }
+  .imd-bot { align-self: flex-start; background: #1e1e1e; border: 1px solid #2c2c2c; }
+  .imd-user { align-self: flex-end; background: #d4af37; color: #111; }
+  #imd-chat-form { display: flex; gap: 8px; padding: 10px; border-top: 1px solid #2c2c2c; background: #0b0b0b; }
+  #imd-chat-input {
+    flex: 1; background: #1a1a1a; color: #f2f2f2; border: 1px solid #333; border-radius: 10px;
+    padding: 10px; font-size: 16px; outline: none;
+  }
+  #imd-chat-input:focus { border-color: #d4af37; }
+  #imd-chat-send {
+    background: #d4af37; color: #111; border: 0; border-radius: 10px; padding: 0 14px;
+    font-weight: 700; cursor: pointer; font-size: 14px;
+  }
+  #imd-chat-send:disabled { opacity: .5; cursor: default; }
+</style>
 
+<button id="imd-chat-btn" type="button" aria-label="Abrir chat">💬</button>
+
+<div id="imd-chat-panel" role="dialog" aria-label="Chat con Imperia">
+  <div id="imd-chat-head">
+    <div><strong>Imperia</strong><span>Asistente de Imperio Digital Morales</span></div>
+    <button id="imd-chat-close" type="button" aria-label="Cerrar chat">×</button>
+  </div>
+  <div id="imd-chat-msgs"></div>
+  <form id="imd-chat-form" autocomplete="off">
+    <input id="imd-chat-input" type="text" placeholder="Escribe tu pregunta..." maxlength="500" />
+    <button id="imd-chat-send" type="submit">Enviar</button>
+  </form>
+</div>
+
+<script>
+(function () {
+  var WORKER_URL = "https://square-glade-f081.moralesyelitza746.workers.dev";
+  var WHATSAPP = "https://wa.me/56942580715?text=Hola%20Yelitza%2C%20quiero%20mi%20p%C3%A1gina%20web%20profesional";
+
+  var btn = document.getElementById("imd-chat-btn");
+  var panel = document.getElementById("imd-chat-panel");
+  var closeBtn = document.getElementById("imd-chat-close");
+  var msgs = document.getElementById("imd-chat-msgs");
+  var form = document.getElementById("imd-chat-form");
+  var input = document.getElementById("imd-chat-input");
+  var send = document.getElementById("imd-chat-send");
+  var history = [];
+  var greeted = false;
+
+  function addMsg(text, who) {
+    var d = document.createElement("div");
+    d.className = "imd-msg " + (who === "user" ? "imd-user" : "imd-bot");
+    var parts = String(text).split(/(https?:\/\/[^\s]+)/g);
+    parts.forEach(function (p) {
+      if (/^https?:\/\//.test(p)) {
+        var a = document.createElement("a");
+        a.href = p; a.textContent = p; a.target = "_blank"; a.rel = "noopener noreferrer";
+        d.appendChild(a);
+      } else {
+        d.appendChild(document.createTextNode(p));
+      }
+    });
+    msgs.appendChild(d);
+    msgs.scrollTop = msgs.scrollHeight;
+    return d;
+  }
+
+  function toggle(open) {
+    panel.classList.toggle("imd-open", open);
+    if (open && !greeted) {
+      greeted = true;
+      addMsg("¡Hola! 👋 Soy Imperia, la asistente de Imperio Digital Morales. Puedo contarte sobre nuestros servicios y planes de páginas web. ¿En qué te ayudo?", "bot");
+    }
+    if (open) input.focus();
+  }
+
+  btn.addEventListener("click", function () { toggle(!panel.classList.contains("imd-open")); });
+  closeBtn.addEventListener("click", function () { toggle(false); });
+
+  form.addEventListener("submit", function (e) {
+    e.preventDefault();
+    var text = input.value.trim();
+    if (!text) return;
+    input.value = "";
+    addMsg(text, "user");
+    history.push({ role: "user", content: text });
+    send.disabled = true;
+    var typing = addMsg("Escribiendo...", "bot");
+
+    fetch(WORKER_URL, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ messages: history })
+    })
+      .then(function (r) { return r.json().then(function (j) { return { ok: r.ok, j: j }; }); })
+      .then(function (res) {
+        typing.remove();
+        if (res.ok && res.j.reply) {
+          history.push({ role: "assistant", content: res.j.reply });
+          addMsg(res.j.reply, "bot");
+        } else {
+          addMsg("Ups, ahora no puedo responder. Escríbenos directo por WhatsApp: " + WHATSAPP, "bot");
+        }
+      })
+      .catch(function () {
+        typing.remove();
+        addMsg("Ups, ahora no puedo responder. Escríbenos directo por WhatsApp: " + WHATSAPP, "bot");
+      })
+      .then(function () { send.disabled = false; input.focus(); });
+  });
+})();
+</script>
   </body>
 </html>
