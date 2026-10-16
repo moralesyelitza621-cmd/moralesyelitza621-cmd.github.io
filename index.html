@@ -457,11 +457,35 @@ S<!DOCTYPE html>
     background: #d4af37; color: #111; border: 0; border-radius: 10px; padding: 0 14px;
     font-weight: 700; cursor: pointer; font-size: 14px;
   }
-  #imd-chat-send:disabled { opacity: .5; cursor: default; }
+  #imd-chat-send:disabled { opacity: .5; cursor: default; }/* Botón Imperia dorado y azul */
+#imd-chat-btn {
+  width: auto; height: auto; gap: 14px;
+  padding: 10px 26px 10px 10px;
+  border: 3px solid #d4af37; border-radius: 60px;
+  background: linear-gradient(135deg, #0b2a4a, #0e3f6b);
+  color: #fff; font-size: 14px; line-height: 1.2; text-align: left;
+  box-shadow: 0 0 0 2px rgba(212,175,55,.4), 0 8px 28px rgba(30,200,240,.45);
+}
+#imd-chat-btn:hover { transform: scale(1.04); box-shadow: 0 0 0 2px #f0c46a, 0 12px 34px rgba(30,200,240,.7); }
+#imd-chat-btn img {
+  width: 68px; height: 68px; border-radius: 50%; object-fit: cover;
+  border: 3px solid #d4af37; box-shadow: 0 0 14px #1ec8f0;
+}
+#imd-chat-btn .t1 {
+  display: block; font-size: 19px; font-weight: 700;
+  background: linear-gradient(90deg, #f6d98b, #d4af37);
+  -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;
+}
+#imd-chat-btn .t2 { display: block; font-size: 13px; color: #9fe6fb; font-weight: 400; }
+#imd-chat-panel { bottom: 120px; max-height: calc(100vh - 150px); }
+@media (max-width: 600px) {
+  #imd-chat-btn { padding: 8px 18px 8px 8px; }
+  #imd-chat-btn img { width: 56px; height: 56px; }
+  #imd-chat-btn .t1 { font-size: 16px; }
+}
 </style>
 
-<button id="imd-chat-btn" type="button" aria-label="Abrir chat">💬</button>
-
+<button id="imd-chat-btn" type="button" aria-label="Abrir chat"><img src="imperia_perfil.png" alt="Imperia"><span><span class="t1">Habla con Imperia</span><span class="t2">Asesora de ventas IA · En línea</span></span></button>
 <div id="imd-chat-panel" role="dialog" aria-label="Chat con Imperia">
   <div id="imd-chat-head">
     <div><strong>Imperia</strong><span>Asistente de Imperio Digital Morales</span></div>
