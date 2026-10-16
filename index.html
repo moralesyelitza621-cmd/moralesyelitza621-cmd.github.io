@@ -220,7 +220,9 @@
     section{padding:64px 0;}
     .hero{padding:96px 0 64px;}
   }
-</style>
+.video-fondo{position:fixed;inset:0;width:100%;height:100%;object-fit:cover;z-index:-2;background:#0B1426}
+.capa-fondo{position:fixed;inset:0;background:rgba(11,20,38,.55);z-index:-1}
+.btn-musica{position:fixed;left:20px;bottom:20px;z-index:50;padding:12px 20px;border:0;border-radius:999px;background:linear-gradient(135deg,#f6d365,#c9971c);color:#2b1d00;font-weight:700;font-size:1rem;cursor:pointer;box-shadow:0 4px 14px rgba(0,0,0,.4)}</style>
   <script src="https://cdn.jsdelivr.net/npm/@statsig/js-client/build/statsig-js-client.min.js"></script>
 <script>
   const myStatsigClient = new Statsig.StatsigClient(
@@ -230,7 +232,12 @@
   myStatsigClient.initializeAsync();
 </script>
 </head>
-<body>
+<body><video class="video-fondo" autoplay muted loop playsinline preload="auto">
+  <source src="WhatsApp%20Video%202026-10-16%20at%2001.11.25.mp4" type="video/mp4">
+</video>
+<div class="capa-fondo"></div>
+<audio id="musica" src="musica.mp3" loop preload="none"></audio>
+<button id="btnMusica" class="btn-musica">♪ Música</button>
 
 <section class="hero"><video id="heroVideo" autoplay muted loop playsinline style="width:100%;max-width:600px;border-radius:12px;margin-top:24px;display:block;">
         <source src="Imperia_talking_about_website_202607112236.mp4" type="video/mp4"></video><button onclick="var v=document.getElementById('heroVideo'); v.muted=!v.muted; this.textContent = v.muted ? '🔇 Activar sonido' : '🔊 Silenciar';" style="margin-top:8px;padding:8px 16px;border-radius:20px;border:none;background:#0F6E56;color:#fff;font-size:14px;cursor:pointer;">🔇 Activar sonido</button>
@@ -578,5 +585,14 @@
   });
 })();
 </script>
-  </body>
+ <script>
+  const audio = document.getElementById('musica');
+  const btnM = document.getElementById('btnMusica');
+  btnM.addEventListener('click', async () => {
+    try {
+      if (audio.paused) { await audio.play(); btnM.textContent = '❚❚ Pausar'; }
+      else { audio.pause(); btnM.textContent = '♪ Música'; }
+    } catch (e) { console.error(e); }
+  });
+</script> </body>
 </html>
