@@ -495,10 +495,21 @@
   #imd-chat-btn img { width: 56px; height: 56px; }
   #imd-chat-btn .t1 { font-size: 16px; }
 }
+    /* Video de fondo del chat */
+  #imd-chat-video {
+    position: absolute; inset: 0; width: 100%; height: 100%;
+    object-fit: cover; opacity: .55; z-index: 0; pointer-events: none;
+  }
+  #imd-chat-head, #imd-chat-msgs, #imd-chat-form { position: relative; z-index: 1; }
+  #imd-chat-head { background: rgba(11,11,11,.55); }
+  #imd-chat-form { background: rgba(11,11,11,.55); }
+  #imd-chat-input { background: rgba(26,26,26,.75); }
+  .imd-bot { background: rgba(30,30,30,.8); }
 </style>
 
 <button id="imd-chat-btn" type="button" aria-label="Abrir chat"><img src="imperia_perfil.png" alt="Imperia"><span><span class="t1">Habla con Imperia</span><span class="t2">Asesora de ventas IA · En línea</span></span></button>
 <div id="imd-chat-panel" role="dialog" aria-label="Chat con Imperia">
+  <video id="imd-chat-video" src="imperia_chat_fondo.mp4" autoplay muted loop playsinline></video>
   <div id="imd-chat-head">
     <div><strong>Imperia</strong><span>Asistente de Imperio Digital Morales</span></div>
     <button id="imd-chat-close" type="button" aria-label="Cerrar chat">×</button>
